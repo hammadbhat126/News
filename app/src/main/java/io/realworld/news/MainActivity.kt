@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
     }
 
     private fun fetchData() {
-        val url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=b9b5bc2ae00b4eb5a441b36d8192e207"
+        val url = "https://newsapi.org/v2/top-headlines?country=in&category=science&piKey=b9b5bc2ae00b4eb5a441b36d8192e207"
         val jsonObjectRequest = JsonObjectRequest(
                 Request.Method.GET,
                 url,
                 null,
-                Response.Listener {
+                {
                     val newsJsonArray = it.getJSONArray("articles")
                     val newsArray = ArrayList<News>()
                     for(i in 0 until newsJsonArray.length()) {
@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
 
                     mAdapter.updateNews(newsArray)
                 },
-                Response.ErrorListener {
+                {
 
                 }
         )
